@@ -1,0 +1,65 @@
+.event-list-page {
+    background-color: var(--bg-color);
+    min-height: 100vh;
+    padding-bottom: 3rem;
+}
+
+.events-grid {
+    display: grid;
+    /* Responsive Grid: Cards min 300px, auto-fit fills available space */
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 2rem;
+    margin-top: 2rem;
+}
+
+.event-card {
+    background: white;
+    padding: 1.5rem;
+    border-radius: var(--radius);
+    box-shadow: var(--shadow-sm);
+    transition: transform 0.2s, box-shadow 0.2s;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    height: 100%;
+    border: 1px solid #e5e7eb;
+}
+
+.event-card:hover {
+    transform: translateY(-5px);
+    box-shadow: var(--shadow-lg);
+}
+
+.event-card h3 {
+    margin-top: 0;
+    color: #111827;
+    font-size: 1.25rem;
+    margin-bottom: 0.5rem;
+}
+
+.event-date {
+    color: var(--primary-color);
+    font-weight: 600;
+    font-size: 0.875rem;
+    margin: 0.5rem 0;
+}
+
+.event-location {
+    color: #6b7280;
+    font-size: 0.9rem;
+    margin-bottom: 1.5rem;
+}
+
+/* Force button to bottom of card if content varies */
+.event-card .btn {
+    margin-top: auto;
+    width: 100%;
+}
+
+@media (max-width: 640px) {
+    .events-grid {
+        grid-template-columns: 1fr;
+        /* Stack singly on mobile */
+        gap: 1.5rem;
+    }
+}
