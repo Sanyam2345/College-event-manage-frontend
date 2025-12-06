@@ -3,7 +3,7 @@ import { useParams, useNavigate } from 'react-router-dom';
 import eventService from '../services/eventService';
 import Navbar from '../components/Navbar';
 import { AuthContext } from '../context/AuthContext';
-import '../styles/EventDetails.css';
+
 
 const EventDetails = () => {
     const { id } = useParams();

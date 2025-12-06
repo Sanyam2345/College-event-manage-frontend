@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import eventService from '../services/eventService';
 import Navbar from '../components/Navbar';
-import '../styles/EventList.css';
+
 
 const EventList = () => {
     const [events, setEvents] = useState([]);

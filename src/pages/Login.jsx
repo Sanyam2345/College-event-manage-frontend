@@ -1,7 +1,7 @@
 import React, { useState, useContext } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { AuthContext } from '../context/AuthContext';
-import '../styles/Auth.css'; // Shared auth styles
+
 
 const Login = () => {
     const [email, setEmail] = useState('');

@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import eventService from '../services/eventService';
 import Navbar from '../components/Navbar';
-import '../styles/Admin.css';
+
 
 const AdminPanel = () => {
     const [events, setEvents] = useState([]);
