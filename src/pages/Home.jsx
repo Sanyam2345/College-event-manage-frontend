@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import Navbar from '../components/Navbar';
 import api from '../api/axios'; // Use the configured axios instance
-import '../styles/Home.css';
+
 
 const Home = () => {
     const [upcomingEvents, setUpcomingEvents] = useState([]);
