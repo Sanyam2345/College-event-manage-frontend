@@ -30,8 +30,13 @@ const EventDetails = () => {
             return;
         }
         try {
-            await eventService.registerForEvent(id);
-            setMsg('Successfully registered!');
+            const response = await eventService.registerForEvent(id);
+            // Check for smart conflict warning in response
+            if (response.data.conflict_warning) {
+                setMsg(`Successfully registered! Note: ${response.data.conflict_warning}`);
+            } else {
+                setMsg('Successfully registered!');
+            }
         } catch (error) {
             setMsg(error.response?.data?.detail || 'Registration failed');
         }
@@ -53,9 +58,24 @@ const EventDetails = () => {
                     <p>{event.description}</p>
                 </div>
                 {msg && <p className="message">{msg}</p>}
-                <button onClick={handleRegister} className="btn btn-primary btn-large">
-                    Register Now
-                </button>
+
+                {/* Smart Register Button Logic */}
+                {(() => {
+                    const isClosed = event.status !== 'UPCOMING';
+                    const isFull = (event.registrations_count || 0) >= (event.capacity || 100);
+
+                    if (isClosed) {
+                        return <button disabled className="btn btn-disabled">Event Closed ({event.status})</button>;
+                    }
+                    if (isFull) {
+                        return <button disabled className="btn btn-disabled">Event Full</button>;
+                    }
+                    return (
+                        <button onClick={handleRegister} className="btn btn-primary btn-large">
+                            Register Now
+                        </button>
+                    );
+                })()}
             </div>
         </div>
     );

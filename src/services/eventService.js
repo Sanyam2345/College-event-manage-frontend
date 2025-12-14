@@ -25,5 +25,8 @@ export default {
     getEventById,
     createEvent,
     deleteEvent,
-    registerForEvent
+    registerForEvent,
+    updateEvent: (id, eventData) => {
+        return api.put(`/events/${id}`, eventData);
+    }
 };
